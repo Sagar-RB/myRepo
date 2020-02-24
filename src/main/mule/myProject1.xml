@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="aaea7e96-7d22-463b-8d00-08590f75a32c" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<import doc:name="Import" doc:id="8dab6141-d58f-4f81-a805-172c6d4423c8" file="exceptionhandling.xml" />
+	<configuration doc:name="Configuration" doc:id="721fb609-d015-489e-a156-de58c837ac5f" defaultErrorHandler-ref="CommonExceptionHandler" />
+	<flow name="myproject1Flow" doc:id="a86b4fe7-8747-4c89-88a3-0fdddfdd246f" >
+		<http:listener doc:name="Listener" doc:id="1f78aa9f-d065-46a3-9327-0b47e7022831" config-ref="HTTP_Listener_config" path="test"/>
+		<logger level="INFO" doc:name="Logger" doc:id="c0b732c1-8423-44e0-bd61-6a2e3aaf2f8e" message="Success"/>
+	</flow>
+</mule>
